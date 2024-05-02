@@ -3,10 +3,6 @@ import classes from './MeetupList.module.css';
 
 function MeetupList(props) {
 
-  const meetupHandler  = (meetupData) => {
-
-  }
-
   return (
     <ul className={classes.list}>
       {props.meetups.map((meetup) => (
@@ -17,7 +13,6 @@ function MeetupList(props) {
           title={meetup.title}
           address={meetup.address}
           desc={meetup.description}
-          
         />
       ))}
     </ul>
