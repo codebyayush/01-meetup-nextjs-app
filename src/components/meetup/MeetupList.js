@@ -3,6 +3,7 @@ import classes from './MeetupList.module.css';
 
 function MeetupList(props) {
 
+  // console.log('props:-',props.meetups);
   return (
     <ul className={classes.list}>
       {props.meetups.map((meetup) => (

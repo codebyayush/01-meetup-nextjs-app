@@ -1,6 +1,6 @@
 "use client";
 import MeetupDetails from '@/components/meetup/MeetupDetails';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import React from 'react';
 
 
@@ -29,19 +29,19 @@ const dummyMeetups = [
 ];
 
 
-const fetchMeetups = () => {
+const fetchMeetups = async () => {
     const id = useParams();
 
     const findMeetup = dummyMeetups.find((meet) => meet.id == id.meetupId)
     return findMeetup;
 }
 
-function DetailPage() {
-  const resp = fetchMeetups();
+export default async function DetailPage() {
+  const meetup = await fetchMeetups();
   return (
   <>
   <ul>
-    <MeetupDetails dummyMeetups={resp}/>
+    <MeetupDetails dummyMeetups={meetup}/>
   </ul>
   </>)
 };
@@ -58,5 +58,3 @@ function DetailPage() {
 //         }
 //     }
 // }
-
-export default DetailPage;
