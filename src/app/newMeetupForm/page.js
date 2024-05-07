@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import NewMeetupForm from "@/components/meetup/NewMeetupForm";
 
 const MeetupForm = () => {

@@ -1,19 +1,21 @@
+'use client'
+import ItemContext from '@/context/ItemContext';
 import MeetupItem from './MeetupItem';
 import classes from './MeetupList.module.css';
+import { useContext } from 'react';
+
 
 function MeetupList(props) {
+  const ctx = useContext(ItemContext)
+  const {meetups} = props;
 
-  // console.log('props:-',props.meetups);
+  ctx.addAllMeetup(meetups)
+
   return (
     <ul className={classes.list}>
-      {props.meetups.map((meetup) => (
+      {meetups.map((meetup) => (
         <MeetupItem
-          key={meetup.id}
-          id={meetup.id}
-          image={meetup.image}
-          title={meetup.title}
-          address={meetup.address}
-          desc={meetup.description}
+          newMeetup={meetup}
         />
       ))}
     </ul>

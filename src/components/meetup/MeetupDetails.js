@@ -1,8 +1,10 @@
+'use client'
 import React from "react";
 import Card from "../ui/Card";
 import classes from "./MeetupItem.module.css";
 
 const MeetupDetails = (props) => {
+  
   return (
     <>
       <li className={classes.item}>

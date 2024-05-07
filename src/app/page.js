@@ -1,16 +1,19 @@
-
 import MeetupList from "@/components/meetup/MeetupList";
-import React from "react";
+import { notFound } from "next/navigation";
+import React, { useContext } from "react";
 
 const fetchMeetups = async () => {
-  const resp = await fetch("http://localhost:3000/api/meetup");
-  return resp;
+  let resp = await fetch("http://localhost:3000/api/meetup", {
+    cache: "no-store",
+  });
+  if (!resp.ok) return notFound();
+  return resp.json();
 };
 
 export default async function Home() {
-  const resp = await fetchMeetups();
+  const meetups = await fetchMeetups();
+  console.log("new meetups", meetups);
 
-  console.log('meetup response', resp);
   const dummyMeetups = [
     {
       id: "m1",
@@ -41,7 +44,7 @@ export default async function Home() {
 
   return (
     <>
-      <MeetupList meetups={dummyMeetups} />
+      <MeetupList meetups={meetups} />
     </>
   );
 }
